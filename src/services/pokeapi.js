@@ -23,3 +23,11 @@ export async function getPokemonSpecies(nameOrId){
     }
     return res.json();
 }
+
+export async function getEvolutionChain(chainUrl){
+    const res=await fetch(chainUrl);
+    if(!res.ok){
+        throw new Error('Failed to fetch evolution chain');
+    }
+    return res.json();
+}
