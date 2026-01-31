@@ -1,16 +1,174 @@
-# React + Vite
+# 🎮 Terminal Pokémon
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, feature-rich Pokémon explorer — built with a clean UI, responsive design, and real-time data from the PokéAPI.
 
-Currently, two official plugins are available:
+**Terminal Pokémon** lets you browse, search, and favorite Pokémon, view detailed stats, abilities, evolutions, types, weaknesses, and generation info — all in a smooth, responsive interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Highlights
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ⚡ Fast and responsive browsing
+- 🎨 Type- and generation-specific color badges
+- 👤 Favorite Pokémon with one click
+- 📊 Detailed Pokémon stats, abilities, and evolutions
+- 🌓 Light & dark mode support
+- 📱 Fully responsive for desktop, tablet, and mobile
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧠 Game Concept
+
+Explore the Pokémon universe from your browser. Each Pokémon includes:
+
+- ✅ Name & ID  
+- ✅ Types with color-coded badges  
+- ✅ Stats with animated bars  
+- ✅ Abilities (including hidden abilities)  
+- ✅ Weaknesses and resistances  
+- ✅ Evolution chain with images  
+- ✅ Generation and category information  
+
+Favorites are stored in-browser, making it easy to quickly revisit your top Pokémon.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React 18
+- TailwindCSS
+- Vite
+- React Router DOM
+- Lucide React (icons)
+
+### Backend / Data
+- PokéAPI (live Pokémon data)
+
+---
+
+## 🚀 Features
+
+### ✅ Implemented
+- Pokémon browsing grid
+- Detailed Pokémon info pages
+- Evolution chains
+- Type-specific and generation badges
+- Favorites management (stored in browser)
+- Light & dark theme support
+- Responsive layout (desktop/tablet/mobile)
+
+### 🧩 Planned
+- Multiple description versions per Pokémon (flavor text)
+- Enhanced animations & transitions
+- Optional backend for persistent favorites
+- Video walkthrough integration
+
+---
+
+## 📸 Screenshots
+
+> Screenshots will be added here to showcase:
+- Pokémon browsing grid
+- Pokémon details page
+- Evolution chains
+
+---
+
+## 🎥 Demo Video
+
+> Video walkthrough coming soon.
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+├── components/
+│   ├── layout/
+│   │   └── Navbar.jsx
+│   └── pokemon/
+│       ├── PokemonCard.jsx
+│       ├── PokemonGrid.jsx
+│       ├── StatsBar.jsx
+│       └── SearchBar.jsx
+├── hooks/
+│   └── useFavourites.js
+├── pages/
+│   ├── Home.jsx
+│   ├── Favourites.jsx
+│   ├── PokemonDetails.jsx
+│   └── NotFound.jsx
+├── services/
+│   └── pokeapi.js
+├── index.css
+└── App.css
+public/
+└── pokemonLogo.webp  # favicon
+```
+
+---
+
+## 🧪 Running Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/PrabhatKumarDev/js-pokedex.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open your browser at the localhost URL shown in the terminal.
+
+✅ Tip: You can also access it from your phone using the same Wi-Fi network.
+
+---
+
+## 🛣️ Roadmap
+
+- Add animations & sound effects
+- Add persistent backend for favorites
+- Add video walkthrough & screenshots
+- Enhance evolution and generation displays
+- Production deployment
+
+---
+
+## 🤝 Contributing
+
+This project is personal, but contributions, ideas, and feedback are welcome.
+
+- Open an issue
+- Start a discussion
+- Submit a pull request
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## ⭐ Acknowledgements
+
+- Inspired by Pokémon games and the PokéAPI project  
+- Powered by **PokéAPI**
+- Built with ❤️ using **React + TailwindCSS**
+
+---
+
+## 🌐 Live Demo
+
+🔗 **Check Live Demo:** *(Add link here)*
+
+---
+
+## 🎥 Video
+
+▶️ **Watch Demo:** *(Add link here)*
