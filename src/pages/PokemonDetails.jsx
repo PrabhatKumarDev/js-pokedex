@@ -9,6 +9,9 @@ import {
 } from "../services/pokeapi";
 import useFavourites from "../hooks/useFavourites";
 
+function getIdFromSpeciesUrl(url) {
+    return url.split("/").filter(Boolean).pop();
+  }
 const PokemonDetails = () => {
   const { name } = useParams();
   const [pokemon, setPokemon] = useState(null);
@@ -17,7 +20,6 @@ const PokemonDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [weaknesses, setWeaknesses] = useState([]);
-  const [descVersion, setDescVersion] = useState("red");
   const { isFavorite, toggleFavorite } = useFavourites();
 
   useEffect(() => {
@@ -32,42 +34,44 @@ const PokemonDetails = () => {
         setSpecies(s);
 
         // Fetch evolution chain
-        // Fetch weaknesses
-        try {
-          const typeResponses = await Promise.all(
-            p.types.map((t) => fetch(t.type.url).then((r) => r.json())),
-          );
+        (async () => {
+  try {
+    const typeResponses = await Promise.all(
+      p.types.map((t) => fetch(t.type.url).then((r) => r.json()))
+    );
 
-          const weakTo = new Set();
-          typeResponses.forEach((type) => {
-            type.damage_relations.double_damage_from.forEach((d) =>
-              weakTo.add(d.name),
-            );
-          });
+    const weakTo = new Set();
+    typeResponses.forEach((type) => {
+      type.damage_relations.double_damage_from.forEach((d) =>
+        weakTo.add(d.name)
+      );
+    });
 
-          setWeaknesses([...weakTo]);
-        } catch (_) {}
+    if (mounted) setWeaknesses([...weakTo]);
+  } catch {}
+})();
+
 
         if (s.evolution_chain?.url) {
           try {
             const chain = await getEvolutionChain(s.evolution_chain.url);
             const evolutionList = [];
             async function traverse(node) {
-              const evoDetails = await getPokemonDetails(
-                node.species.name,
-              ).catch(() => null);
+              const id = getIdFromSpeciesUrl(node.species.url);
+
               evolutionList.push({
                 name: node.species.name,
-                image:
-                  evoDetails?.sprites?.other?.["official-artwork"]
-                    ?.front_default || evoDetails?.sprites?.front_default,
+                id,
+                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
               });
-              if (node.evolves_to && node.evolves_to.length > 0) {
+
+              if (node.evolves_to?.length) {
                 for (const child of node.evolves_to) {
                   await traverse(child);
                 }
               }
             }
+
             await traverse(chain.chain);
             if (mounted) setEvolutions(evolutionList);
           } catch (_) {}
@@ -89,9 +93,8 @@ const PokemonDetails = () => {
   if (!pokemon) return <div className="p-8 text-center">No data</div>;
 
   const favorite = isFavorite(pokemon.id);
-  const imageUrl =
-    pokemon.sprites?.other?.["official-artwork"]?.front_default ||
-    pokemon.sprites?.front_default;
+  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+
   const flavor =
     species?.flavor_text_entries
       ?.find((f) => f.language.name === "en")
@@ -99,25 +102,6 @@ const PokemonDetails = () => {
 
   const MAX_STAT = 255;
 
-  const getStatColor = (stat) => {
-    {
-      console.log(stat);
-    }
-    if (stat >= 100) return "bg-red-500";
-    if (stat >= 80) return "bg-orange-500";
-    if (stat >= 60) return "bg-yellow-500";
-    if (stat >= 40) return "bg-blue-500";
-    return "bg-gray-500";
-  };
-
-  const PokeballIcon = ({ className }) => (
-    <div
-      className={`relative h-4 w-4 rounded-full border border-current ${className}`}
-    >
-      <div className="absolute top-1/2 left-0 right-0 h-px bg-current -translate-y-1/2" />
-      <div className="absolute top-1/2 left-1/2 h-1.5 w-1.5 rounded-full bg-background border border-current -translate-x-1/2 -translate-y-1/2" />
-    </div>
-  );
   const generation = species?.generation?.name
     ? species.generation.name
         .replace("generation-", "Generation ")
@@ -139,6 +123,7 @@ const PokemonDetails = () => {
   const generationText = genKey
     .replace("generation-", "Generation ")
     .toUpperCase();
+
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
@@ -168,6 +153,8 @@ const PokemonDetails = () => {
                 <img
                   src={imageUrl}
                   alt={pokemon.name}
+                  loading="lazy"
+                  decoding="async"
                   className="relative z-10 w-64 h-64 object-contain drop-shadow-xl"
                 />
               ) : (
@@ -374,6 +361,8 @@ const PokemonDetails = () => {
                           <img
                             src={evo.image}
                             alt={evo.name}
+                            loading="lazy"
+                            decoding="async"
                             className="w-20 h-20 object-contain"
                           />
                         ) : (
