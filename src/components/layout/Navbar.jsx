@@ -42,7 +42,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col">
-            <span className="text-2xl font-bold tracking-tight text-foreground">
+            <span className="text-lg font-bold tracking-tight text-foreground">
               Pokédex
             </span>
             <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
@@ -51,10 +51,10 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 mr-37">
           <Link
             to="/"
-            className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
           >
             Explore
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all" />
@@ -62,7 +62,7 @@ const Navbar = () => {
 
           <Link
             to="/favourites"
-            className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors relative group flex items-center gap-2"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group flex items-center gap-2"
           >
             Favorites
             {mounted && favoritesCount > 0 && (
