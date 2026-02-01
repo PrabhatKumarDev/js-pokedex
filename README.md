@@ -1,8 +1,8 @@
-# 🎮 Terminal Pokémon
+# 🎮 Pokémon Pokédex
 
 A modern, feature-rich Pokémon explorer — built with a clean UI, responsive design, and real-time data from the PokéAPI.
 
-**Terminal Pokémon** lets you browse, search, and favorite Pokémon, view detailed stats, abilities, evolutions, types, weaknesses, and generation info — all in a smooth, responsive interface.
+**Pokémon Pokédex** lets you browse, search, and favorite Pokémon, view detailed stats, abilities, evolutions, types, weaknesses, and generation info — all in a smooth, responsive interface.
 
 ---
 
@@ -17,17 +17,17 @@ A modern, feature-rich Pokémon explorer — built with a clean UI, responsive d
 
 ---
 
-## 🧠 Game Concept
+## 🧠 App Concept
 
 Explore the Pokémon universe from your browser. Each Pokémon includes:
 
-- ✅ Name & ID  
-- ✅ Types with color-coded badges  
-- ✅ Stats with animated bars  
-- ✅ Abilities (including hidden abilities)  
-- ✅ Weaknesses and resistances  
-- ✅ Evolution chain with images  
-- ✅ Generation and category information  
+- ✅ Name & ID
+- ✅ Types with color-coded badges
+- ✅ Stats with animated bars
+- ✅ Abilities (including hidden abilities)
+- ✅ Weaknesses and resistances
+- ✅ Evolution chain with images
+- ✅ Generation and category information
 
 Favorites are stored in-browser, making it easy to quickly revisit your top Pokémon.
 
@@ -36,6 +36,7 @@ Favorites are stored in-browser, making it easy to quickly revisit your top Pok�
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - React 18
 - TailwindCSS
 - Vite
@@ -43,6 +44,7 @@ Favorites are stored in-browser, making it easy to quickly revisit your top Pok�
 - Lucide React (icons)
 
 ### Backend / Data
+
 - PokéAPI (live Pokémon data)
 
 ---
@@ -50,6 +52,7 @@ Favorites are stored in-browser, making it easy to quickly revisit your top Pok�
 ## 🚀 Features
 
 ### ✅ Implemented
+
 - Pokémon browsing grid
 - Detailed Pokémon info pages
 - Evolution chains
@@ -59,6 +62,7 @@ Favorites are stored in-browser, making it easy to quickly revisit your top Pok�
 - Responsive layout (desktop/tablet/mobile)
 
 ### 🧩 Planned
+
 - Multiple description versions per Pokémon (flavor text)
 - Enhanced animations & transitions
 - Optional backend for persistent favorites
@@ -68,16 +72,36 @@ Favorites are stored in-browser, making it easy to quickly revisit your top Pok�
 
 ## 📸 Screenshots
 
-> Screenshots will be added here to showcase:
-- Pokémon browsing grid
-- Pokémon details page
-- Evolution chains
+### 🏠 Main Landing Page
+
+<p align="center">
+  <img src="./src/assets/main_page.png" alt="Main Page" width="800" />
+</p>
+
+### ❤️ Favourites Page
+
+<p align="center">
+  <img src="./src/assets/favourites.png" alt="Favourites Page" width="800" />
+</p>
+
+### 📊 Pokémon Details Page
+
+<p align="center">
+  <img src="./src/assets/details_page.png" alt="Pokémon Details Page" width="800" />
+</p>
+
+### Demo
+
+<p align="center">
+  <img src="./src/assets/Website.gif" alt="Website Demo" width="800" />
+</p>
 
 ---
 
-## 🎥 Demo Video
+## 🌐 Live Demo
 
-> Video walkthrough coming soon.
+🔗 **Check Live Demo:**  
+👉 _[Live Demo](https://js-pokedex-pi.vercel.app/)_
 
 ---
 
@@ -105,7 +129,7 @@ src/
 ├── index.css
 └── App.css
 public/
-└── pokemonLogo.webp  # favicon
+└── pokemonLogo.webp
 ```
 
 ---
@@ -121,11 +145,12 @@ npm install
 
 # Start development server
 npm run dev
+
+# Start development server and see on multiple devices
+npm run dev --host 0.0.0.0
 ```
 
-Open your browser at the localhost URL shown in the terminal.
-
-✅ Tip: You can also access it from your phone using the same Wi-Fi network.
+#### Open your browser at the localhost URL shown in the terminal.
 
 ---
 
@@ -147,6 +172,10 @@ This project is personal, but contributions, ideas, and feedback are welcome.
 - Start a discussion
 - Submit a pull request
 
+### 📧 Contact:
+
+Prabhat Kumar — prabhat.kumar.hisar@gmail.com
+
 ---
 
 ## 📄 License
@@ -157,18 +186,13 @@ MIT License
 
 ## ⭐ Acknowledgements
 
-- Inspired by Pokémon games and the PokéAPI project  
+- Inspired by Pokémon games and the PokéAPI project
 - Powered by **PokéAPI**
 - Built with ❤️ using **React + TailwindCSS**
 
 ---
 
-## 🌐 Live Demo
+## 👨‍💻 Made By
 
-🔗 **Check Live Demo:** *(Add link here)*
-
----
-
-## 🎥 Video
-
-▶️ **Watch Demo:** *(Add link here)*
+**Prabhat Kumar**
+📧 Email: prabhat.kumar.hisar@gmail.com
