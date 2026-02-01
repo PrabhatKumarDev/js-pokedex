@@ -42,17 +42,11 @@ const PokemonGrid = ({ batch = 20, query = "" }) => {
     [batch],
   );
 
-  // initial load is handled by the search-effect below (query === ''),
-  // and by the observer when the sentinel comes into view. Guard against
-  // duplicate network requests using `loadingRef`.
 
-  // Watch for search query changes. If a query is present, fetch that pokemon and
-  // replace the grid contents with the single result. If query is cleared, reset.
   useEffect(() => {
     let mounted = true;
     async function runSearch() {
       if (!query) {
-        // reset to initial infinite-list state
         setPokemons([]);
         setOffset(0);
         setHasMore(true);

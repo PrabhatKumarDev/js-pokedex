@@ -10,8 +10,8 @@ import {
 import useFavourites from "../hooks/useFavourites";
 
 function getIdFromSpeciesUrl(url) {
-    return url.split("/").filter(Boolean).pop();
-  }
+  return url.split("/").filter(Boolean).pop();
+}
 const PokemonDetails = () => {
   const { name } = useParams();
   const [pokemon, setPokemon] = useState(null);
@@ -33,24 +33,22 @@ const PokemonDetails = () => {
         setPokemon(p);
         setSpecies(s);
 
-        // Fetch evolution chain
         (async () => {
-  try {
-    const typeResponses = await Promise.all(
-      p.types.map((t) => fetch(t.type.url).then((r) => r.json()))
-    );
+          try {
+            const typeResponses = await Promise.all(
+              p.types.map((t) => fetch(t.type.url).then((r) => r.json())),
+            );
 
-    const weakTo = new Set();
-    typeResponses.forEach((type) => {
-      type.damage_relations.double_damage_from.forEach((d) =>
-        weakTo.add(d.name)
-      );
-    });
+            const weakTo = new Set();
+            typeResponses.forEach((type) => {
+              type.damage_relations.double_damage_from.forEach((d) =>
+                weakTo.add(d.name),
+              );
+            });
 
-    if (mounted) setWeaknesses([...weakTo]);
-  } catch {}
-})();
-
+            if (mounted) setWeaknesses([...weakTo]);
+          } catch {}
+        })();
 
         if (s.evolution_chain?.url) {
           try {
@@ -124,7 +122,6 @@ const PokemonDetails = () => {
     .replace("generation-", "Generation ")
     .toUpperCase();
 
-
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
@@ -137,9 +134,7 @@ const PokemonDetails = () => {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {/* Image - Large bento box */}
           <div className="relative md:col-span-6 md:row-span-2 bg-card rounded-2xl p-8 flex flex-col items-center justify-center border border-border/50 relative group">
-            {/* Glow effect behind image */}
 
             <div className=" flex items-center justify-center">
               <div
@@ -172,6 +167,7 @@ const PokemonDetails = () => {
                 #{String(pokemon.id).padStart(3, "0")}
               </span>
             </div>
+
             {/* Favorite button */}
             <button
               type="button"
@@ -378,7 +374,6 @@ const PokemonDetails = () => {
                       </span>
                     </Link>
 
-                    {/* Centered Arrow */}
                     {idx < evolutions.length - 1 && (
                       <div className="flex items-center h-28">
                         <span className="text-3xl text-muted-foreground/40 select-none">
